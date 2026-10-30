@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinícius Gabriel Brazão — Portfólio</title>
+  <meta name="description" content="Portfólio de Vinícius Gabriel Brazão. Estudante e desenvolvedor de software em formação. Tecnologia, programação e soluções criativas.">
+  <meta name="author" content="Vinícius Gabriel Brazão">
+  <meta property="og:title" content="Vinícius Gabriel Brazão — Portfólio">
+  <meta property="og:description" content="Estudante e desenvolvedor de software em formação. Transformando ideias em soluções através da tecnologia e da programação.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%230a0a0f%22/><text y=%2270%22 x=%2250%22 font-size=%2250%22 font-family=%22monospace%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%233b82f6%22>&lt;/&gt;</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Particle Canvas -->
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+  <!-- ================================================================
+       HEADER / NAVEGAÇÃO FIXA
+       ================================================================ -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+
+      <a href="#hero" class="brand-link" aria-label="Vinícius Gabriel Brazão — Início">
+        <span class="brand-icon" aria-hidden="true">&lt;V/&gt;</span>
+        <span class="brand-name">Vinícius<span class="brand-surname"> Brazão</span></span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Navegação principal">
+        <a href="#hero" class="nav-link active" data-section="hero">Início</a>
+        <a href="#sobre" class="nav-link" data-section="sobre">Sobre</a>
+        <a href="#projetos" class="nav-link" data-section="projetos">Projetos</a>
+        <a href="#habilidades" class="nav-link" data-section="habilidades">Habilidades</a>
+        <a href="#contato" class="nav-link" data-section="contato">Contato</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://github.com/37891" target="_blank" rel="noopener noreferrer" class="header-github-btn" aria-label="Perfil no GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+    <nav class="mobile-nav-links" aria-label="Navegação mobile">
+      <a href="#hero" class="mobile-nav-link active" data-section="hero">Início</a>
+      <a href="#sobre" class="mobile-nav-link" data-section="sobre">Sobre</a>
+      <a href="#projetos" class="mobile-nav-link" data-section="projetos">Projetos</a>
+      <a href="#habilidades" class="mobile-nav-link" data-section="habilidades">Habilidades</a>
+      <a href="#contato" class="mobile-nav-link" data-section="contato">Contato</a>
+    </nav>
+    <div class="mobile-nav-footer">
+      <a href="https://github.com/37891" target="_blank" rel="noopener noreferrer" class="mobile-github-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        github.com/37891
+      </a>
+      <span class="mobile-status">Desenvolvedor em Formação</span>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       CONTEÚDO PRINCIPAL
+       ================================================================ -->
+  <main id="mainContent">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="section hero-section" id="hero" aria-label="Página Inicial">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-container">
+
+        <div class="hero-badge" aria-hidden="true">
+          <span class="badge-dot"></span>
+          <span>Disponível para oportunidades</span>
+        </div>
+
+        <h1 class="hero-title" id="heroTitle">
+          <span class="hero-line">
+            <span class="hero-word" style="--delay: 0">VINÍCIUS</span>
+            <span class="hero-word" style="--delay: 1">GABRIEL</span>
+          </span>
+          <span class="hero-line">
+            <span class="hero-word gradient-text" style="--delay: 2">BRAZÃO</span>
+          </span>
+        </h1>
+
+        <p class="hero-tagline">
+          <span class="tagline-separator" aria-hidden="true">//</span>
+          Desenvolvedor em formação
+          <span class="tagline-dot" aria-hidden="true">·</span>
+          Tecnologia
+          <span class="tagline-dot" aria-hidden="true">·</span>
+          Programação
+        </p>
+
+        <blockquote class="hero-quote">
+          <span class="quote-mark" aria-hidden="true">"</span>
+          Transformando ideias em soluções através da tecnologia e da programação.
+          <span class="quote-mark" aria-hidden="true">"</span>
+        </blockquote>
+
+        <div class="hero-actions">
+          <a href="#projetos" class="btn btn-primary">
+            <span>Conheça meus projetos</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </a>
+          <a href="#sobre" class="btn btn-outline">
+            <span>Sobre mim</span>
+          </a>
+          <a href="https://github.com/37891" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>Meu GitHub</span>
+          </a>
+          <a href="#contato" class="btn btn-ghost">
+            <span>Entre em contato</span>
+          </a>
+        </div>
+
+        <div class="hero-scroll-indicator" aria-hidden="true">
+          <div class="scroll-line"></div>
+          <span>scroll</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== SOBRE MIM ===================== -->
+    <section class="section" id="sobre" aria-label="Sobre mim">
+      <div class="container">
+
+        <header class="section-header reveal-up">
+          <span class="section-tag">
+            <span class="tag-line" aria-hidden="true"></span>
+            Sobre mim
+          </span>
+          <h2 class="section-title">
+            Construindo meu caminho na tecnologia,
+            <span class="gradient-text">um commit de cada vez.</span>
+          </h2>
+        </header>
+
+        <div class="about-layout">
+
+          <div class="about-text-col reveal-up">
+            <p class="about-lead">
+              Olá! Sou o <strong>Vinícius Gabriel Brazão</strong>, estudante e desenvolvedor de software em formação. Tenho grande interesse por programação e desenvolvimento de sistemas, e estou sempre em busca de novos desafios para evoluir na área de tecnologia.
+            </p>
+            <p>
+              O que me motiva é a possibilidade de resolver problemas reais através do código. Cada novo projeto é uma oportunidade de aprendizado e crescimento. Busco constantemente aprimorar minhas habilidades e explorar novas tecnologias que possam ampliar minha capacidade de criar soluções.
+            </p>
+            <p>
+              Acredito que a combinação de lógica, criatividade e dedicação é o caminho para criar software que faz a diferença. Estou no início da minha jornada como desenvolvedor, mas cada linha de código me aproxima de onde quero chegar.
+            </p>
+
+            <div class="about-actions">
+              <a href="#projetos" class="btn btn-primary">
+                <span>Ver meus projetos</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </a>
+              <a href="#contato" class="btn btn-outline">
+                <span>Fale comigo</span>
+              </a>
+            </div>
+          </div>
+
+          <aside class="about-info-col reveal-up" style="--reveal-delay: 0.15s">
+
+            <div class="info-card">
+              <div class="info-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+              </div>
+              <span class="info-card-label">Formação</span>
+              <p class="info-card-value">Estudante de Tecnologia da Informação</p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+              </div>
+              <span class="info-card-label">Foco</span>
+              <p class="info-card-value">Desenvolvimento de Software &amp; Resolução de Problemas</p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <span class="info-card-label">Objetivo</span>
+              <p class="info-card-value">Evoluir continuamente como desenvolvedor e criar soluções que fazem a diferença</p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              </div>
+              <span class="info-card-label">GitHub</span>
+              <a href="https://github.com/37891" target="_blank" rel="noopener noreferrer" class="info-card-link">
+                github.com/37891
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </a>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJETOS ===================== -->
+    <section class="section" id="projetos" aria-label="Projetos">
+      <div class="container">
+
+        <header class="section-header reveal-up">
+          <span class="section-tag">
+            <span class="tag-line" aria-hidden="true"></span>
+            Projetos
+          </span>
+          <h2 class="section-title">
+            Meus trabalhos e
+            <span class="gradient-text">repositórios.</span>
+          </h2>
+          <p class="section-subtitle">
+            Confira meus projetos e repositórios públicos no GitHub. Cada projeto representa um passo na minha evolução como desenvolvedor.
+          </p>
+        </header>
+
+        <div class="projects-showcase reveal-up">
+
+          <div class="projects-cta-card">
+            <div class="cta-card-glow" aria-hidden="true"></div>
+            <div class="cta-card-content">
+              <div class="cta-icon" aria-hidden="true">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </div>
+              <h3 class="cta-title">Explore meus repositórios</h3>
+              <p class="cta-desc">
+                Acesse meu perfil no GitHub para conferir todos os meus projetos, contribuições e códigos. Novos projetos sendo adicionados constantemente.
+              </p>
+              <a href="https://github.com/37891" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>Acessar meu GitHub</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project cards loaded dynamically or manually added here -->
+          <div class="projects-grid" id="projectsGrid">
+            <!-- Projects will be loaded via JS from GitHub API -->
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== HABILIDADES ===================== -->
+    <section class="section" id="habilidades" aria-label="Habilidades">
+      <div class="container">
+
+        <header class="section-header reveal-up">
+          <span class="section-tag">
+            <span class="tag-line" aria-hidden="true"></span>
+            Habilidades
+          </span>
+          <h2 class="section-title">
+            Tecnologias e ferramentas em
+            <span class="gradient-text">constante evolução.</span>
+          </h2>
+          <p class="section-subtitle">
+            Conhecimentos que estou desenvolvendo e aprimorando no meu percurso como desenvolvedor.
+          </p>
+        </header>
+
+        <div class="skills-grid">
+
+          <!-- Linguagens -->
+          <div class="skill-category reveal-up" style="--reveal-delay: 0s">
+            <div class="skill-category-header">
+              <div class="category-icon blue" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+              </div>
+              <h3 class="category-title">Linguagens</h3>
+            </div>
+            <ul class="skill-list">
+              <li class="skill-item">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-detail">Lógica, manipulação do DOM e programação dinâmica</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">HTML5</span>
+                <span class="skill-detail">Estruturação semântica e acessível de páginas web</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">CSS3</span>
+                <span class="skill-detail">Estilização, layouts responsivos e animações</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Frontend -->
+          <div class="skill-category reveal-up" style="--reveal-delay: 0.1s">
+            <div class="skill-category-header">
+              <div class="category-icon purple" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+              </div>
+              <h3 class="category-title">Frontend</h3>
+            </div>
+            <ul class="skill-list">
+              <li class="skill-item">
+                <span class="skill-name">HTML5 Semântico</span>
+                <span class="skill-detail">Hierarquia de elementos e boas práticas de estrutura</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">CSS3 Moderno</span>
+                <span class="skill-detail">Flexbox, Grid, variáveis CSS e design responsivo</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">JavaScript (DOM)</span>
+                <span class="skill-detail">Interatividade, eventos e manipulação de elementos</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Ferramentas -->
+          <div class="skill-category reveal-up" style="--reveal-delay: 0.2s">
+            <div class="skill-category-header">
+              <div class="category-icon cyan" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <h3 class="category-title">Ferramentas &amp; Tecnologias</h3>
+            </div>
+            <ul class="skill-list">
+              <li class="skill-item">
+                <span class="skill-name">Git &amp; GitHub</span>
+                <span class="skill-detail">Controle de versão, commits e publicação de projetos</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">VS Code</span>
+                <span class="skill-detail">Ambiente de desenvolvimento e produtividade</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Vercel</span>
+                <span class="skill-detail">Deploy e hospedagem de aplicações web</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== CONTATO ===================== -->
+    <section class="section" id="contato" aria-label="Contato">
+      <div class="container">
+
+        <header class="section-header reveal-up">
+          <span class="section-tag">
+            <span class="tag-line" aria-hidden="true"></span>
+            Contato
+          </span>
+          <h2 class="section-title">
+            Vamos conversar sobre
+            <span class="gradient-text">tecnologia e projetos.</span>
+          </h2>
+          <p class="section-subtitle">
+            Entre em contato comigo através do GitHub ou envie uma mensagem pelo formulário abaixo.
+          </p>
+        </header>
+
+        <div class="contact-layout">
+
+          <!-- Canais diretos -->
+          <div class="contact-info-col reveal-up">
+            <h3 class="contact-col-title">Canais diretos</h3>
+
+            <a href="https://github.com/37891" target="_blank" rel="noopener noreferrer" class="contact-channel">
+              <div class="channel-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </div>
+              <div class="channel-info">
+                <span class="channel-label">GitHub</span>
+                <span class="channel-value">github.com/37891</span>
+              </div>
+              <svg class="channel-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+
+            <div class="contact-status-card">
+              <div class="status-indicator" aria-hidden="true">
+                <span class="status-pulse"></span>
+              </div>
+              <div class="status-info">
+                <span class="status-title">Status atual</span>
+                <p class="status-desc">Estudante e desenvolvedor de software em formação, aberto a oportunidades de aprendizado e colaboração.</p>
+              </div>
+            </div>
+
+            <div class="contact-tip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>
+              <p>Utilize o formulário ao lado para enviar uma mensagem. Ela será copiada para sua área de transferência para que você possa enviar pelo meio que preferir.</p>
+            </div>
+
+          </div>
+
+          <!-- Formulário -->
+          <div class="contact-form-col reveal-up" style="--reveal-delay: 0.15s">
+            <form id="contactForm" class="contact-form" novalidate aria-label="Formulário de contato">
+
+              <div class="form-group">
+                <label for="contactName" class="form-label">Seu Nome <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="contactName" name="name" class="form-input" placeholder="Como prefere ser chamado(a)?" required autocomplete="name">
+                <span class="field-error" id="nameError" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Seu E-mail <span class="required" aria-hidden="true">*</span></label>
+                <input type="email" id="contactEmail" name="email" class="form-input" placeholder="seuemail@exemplo.com" required autocomplete="email">
+                <span class="field-error" id="emailError" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contactSubject" class="form-label">Assunto <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="contactSubject" name="subject" class="form-input" placeholder="Qual o assunto da mensagem?" required>
+                <span class="field-error" id="subjectError" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Mensagem <span class="required" aria-hidden="true">*</span></label>
+                <textarea id="contactMessage" name="message" class="form-textarea" rows="5" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                <span class="field-error" id="messageError" aria-live="polite"></span>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg" id="submitContactBtn">
+                  <span id="submitBtnText">Copiar mensagem</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                </button>
+              </div>
+
+            </form>
+
+            <!-- Feedback pós-envio -->
+            <div class="form-feedback" id="formFeedback" style="display: none;" role="status" aria-live="polite">
+              <div class="feedback-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <h3 class="feedback-title">Mensagem copiada!</h3>
+              <p class="feedback-text">O texto da sua mensagem foi copiado para a área de transferência. Cole em um e-mail ou na plataforma de sua preferência para enviar.</p>
+              <div class="feedback-actions">
+                <button type="button" class="btn btn-outline btn-sm" id="newMessageBtn">Enviar outra mensagem</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <span class="footer-logo" aria-hidden="true">&lt;V/&gt;</span>
+        <span class="footer-name">Vinícius Gabriel Brazão</span>
+        <p class="footer-desc">Estudante e desenvolvedor de software em formação. Transformando ideias em soluções através da tecnologia.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Navegação do rodapé">
+        <a href="#hero">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="footer-social">
+        <a href="https://github.com/37891" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Vinícius Gabriel Brazão. Código autoral em HTML, CSS e JS puro.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
